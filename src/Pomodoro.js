@@ -33,12 +33,12 @@ class Pomodoro extends React.Component {
 
   decrementTime = () => {
     if (this.state.isActive && this.state.time === 0) { // If the timer is active and the time is 0
-      this.setState(prevState => ({
-        status : prevState.status === 'Work' ? 'Rest' : 'Work',
+      this.setState({
+        status : this.state.status === 'Work' ? 'Rest' : 'Work',
         // If the status is Work, set the status to rest, else set the status to Work
-        time: prevState.status === 'Work' ? 5 * 60 : 25 * 60 
+        time: this.state.status === 'Work' ? 5 * 60 : 25 * 60 
         // If the status is Work, set the time to 5 minutes, else set the time to 25 minutes
-      }))
+      });
     }
 
     else if (this.state.isActive) { // If the timer is active
