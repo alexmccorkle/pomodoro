@@ -5,12 +5,18 @@ class TimerControls extends React.Component {
   render() {
     const { startTimer, pauseTimer, resetTimer } = this.props; 
     // Destructure the props which means that the properties of the props object are assigned to variables
-    // which in simple terms means that the properties of the props object can be accessed directly
+    // In simple terms: the properties of the props object can be accessed directly
+    const buttonStyle = {
+      width: '100px',
+      height: '50px',
+      marginTop: '20px',
+    }
+    
     return (
-      <div>
-      <button className='btn btn-success' onClick={startTimer}>Start</button>
-      <button className='btn btn-warning'onClick={pauseTimer}>Pause</button>
-      <button className='btn btn-danger' onClick={resetTimer}>Reset</button>
+      <div className='d-flex justify-content-center align-items-center'>
+      <button style={buttonStyle} className='btn btn-success me-2' onClick={startTimer}>Start</button>
+      <button style={buttonStyle} className='btn btn-warning me-2'onClick={pauseTimer}>Pause</button>
+      <button style={buttonStyle} className='btn btn-danger' onClick={resetTimer}>Reset</button>
       </div>
     );
   }
