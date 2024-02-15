@@ -50,10 +50,12 @@ class Pomodoro extends React.Component {
 }
 
   timeUp = () => {
+    if (this.state.time < 60 * 60) // Can't go above 60 minutes when setting the time
     this.setState(prevState => ({ time: prevState.time + 60}));
   }
 
   timeDown = () => {
+    if (this.state.time > 60) // Can't go below 1 minute when setting the time
     this.setState(prevState => ({ time: prevState.time - 60}));
   }
 
