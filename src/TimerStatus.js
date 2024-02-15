@@ -7,13 +7,10 @@ class TimerStatus extends React.Component {
 
   render () {
     const statusStyle = {
-      fontSize: '50px',
-      marginTop: '20px',
-    
     }
 
     const { status } = this.props;
-    return <div className='d-flex justify-content-center align-items-center' style={statusStyle}>{status}!</div>
+    return <div className='d-flex justify-content-center align-items-center' style={statusStyle}>{status}</div>
   }
 }
 
