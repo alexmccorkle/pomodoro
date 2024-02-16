@@ -3,17 +3,19 @@ import TimerDisplay from './TimerDisplay';
 import TimerControls from './TimerControls';
 import TimerStatus from './TimerStatus';
 
+
 // Import state pics:
 import work0 from './assets/animations/skull_working.png';
 import work1 from './assets/animations/skull_working1.png';
 import work2 from './assets/animations/skull_working2.png';
 // NEED TO IMPORT REST IMAGES
 import rest from './assets/animations/skull_working.png';
+// Import audio
+import endSound from './assets/buttons/endSound.mp3';
 
 
+const endAudio = new Audio(endSound);
 
-// Pomodoro Timer component
-// This component will be used to create a timer for the Pomodoro Technique
 
 class Pomodoro extends React.Component {
   // The constructor method is called before the component is mounted
@@ -26,6 +28,9 @@ class Pomodoro extends React.Component {
       frame : 0,
     }
   }
+
+
+
 
   interval = null; // The interval variable is used to store the interval ID
 
@@ -50,6 +55,7 @@ class Pomodoro extends React.Component {
 
   decrementTime = () => {
     if (this.state.isActive && this.state.time === 0) { // If the timer is active and the time is 0
+      this.handleTimerEnd(); // Call the handleTimerEnd method
       this.setState({
         status : this.state.status === 'Work' ? 'Rest' : 'Work',
         // If the status is Work, set the status to rest, else set the status to Work
@@ -63,8 +69,8 @@ class Pomodoro extends React.Component {
         time: prevState.time - 1 // Decrement the time by 1
       })
       );
+    }
   }
-}
 
   timeUp = () => {
     if (this.state.time < 60 * 60) // Can't go above 60 minutes when setting the time
@@ -101,8 +107,11 @@ class Pomodoro extends React.Component {
     this.setState(prevState => ({ frame: (prevState.frame + 1) % 3})); // Cycles between 0, 1, and 2 by using the modulo operator
   }
 
-
-
+  handleTimerEnd = () => { // Everything that happens when the timer ends
+    endAudio.play();
+    // Other timer end code here
+    // XP progress etc.
+  }
 
 
   // The render method is required to render the component
@@ -158,8 +167,8 @@ export default Pomodoro; // Export the Pomodoro component to be used in other fi
 //TODO :
 // 1. Add a sound when the timer ends
 // 2. Turn into Electron app and all that comes with that
-// 3. Add sound effects to buttons
-// 4. Implement a settings or a start page to change the work and rest times?
+// 3. Add a background
+// 4. Add  
 // 5. Add animations to the state display instead of text
   // a. Make the state display a sprite that is resting when state = rest
 
