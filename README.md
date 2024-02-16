@@ -16,6 +16,8 @@ Simple Pomodoro timer that I made as a way of practicing/learning React. So far 
 ### Screenshots : 
 #### - How it looks as of 16/02/24:
   <img width="350" alt="Screenshot 2024-02-16 at 21 23 31" src="https://github.com/alexmccorkle/pomodoro/assets/114952775/bf151156-edda-432f-bc1d-c90052b68f4a">
+  <img width="350" alt="Screenshot 2024-02-17 at 00 50 28" src="https://github.com/alexmccorkle/pomodoro/assets/114952775/b6c8cbf1-feec-4a15-aa99-8d89b0cec642">
+
 
 
 
