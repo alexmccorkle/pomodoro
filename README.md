@@ -2,15 +2,16 @@
 
 Simple Pomodoro timer that I made as a way of practicing/learning React. So far it's a functioning timer where you can adjust the time and either 'Start', 'Pause', or 'Reset' the timer. 
 
-**Latest Update:** 13/02/24
+**Latest Update:** 17/02/24
 
 ### Features :
 - Buttons for increasing/decreasing time
 - Buttons for Start/Pause/Reset
   - Reset to 25 minutes
-- Text stating the current state 'Work' or 'Rest'
-- If opening with openInNewWindow file, it opens a Safari Window that is set to the correct resolution.
-  - $./openinNewWindow
+- Animations for 'Work' or 'Rest' states
+- Runs as an Electron App
+- Sound for when timer ends
+- Blinking time when approaching the end
 
 ### Screenshots : 
 #### - How it looks as of 16/02/24:
