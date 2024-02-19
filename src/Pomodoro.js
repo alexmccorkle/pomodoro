@@ -175,8 +175,11 @@ class Pomodoro extends React.Component {
 export default Pomodoro; // Export the Pomodoro component to be used in other files
 
 //TODO :
-// 4. Add  
-// 5. Add animations to the state display instead of text
-  // a. Make the state display a sprite that is resting when state = rest
+// 1. Change so that you can not change rest time when in rest mode
+// 2. Add so that if you work for example 30 minutes, you get a longer break
+// 3. Implement SoundCloud API to play music when working directly on App
+  // 3.1 Music should pause when timer is paused etc.
+// 4. Progress bar for XP
+
 
 
