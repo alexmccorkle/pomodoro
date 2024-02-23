@@ -17,6 +17,12 @@
   transform: scale(0.97);
 }
 
+.button.mute {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+}
+
 @keyframes blinking {
   0% {
     opacity: 0.5;

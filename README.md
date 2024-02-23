@@ -11,7 +11,13 @@ Simple Pomodoro timer that I made as a way of practicing/learning React. So far 
 - Animations for 'Work' or 'Rest' states
 - Runs as an Electron App
 - Sound for when timer ends
+- Will reset to set time. 
+  - If doing 10 minute timers it will go back to 10 minutes after the rest
 - Blinking time when approaching the end
+- Imbedded SoundCloud LoFi playlist in the background
+  - When you click Play it starts the playlist
+  - Pause/Reset pauses the playlist
+
 
 ### Screenshots : 
 #### - How it looks as of 16/02/24:

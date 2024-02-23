@@ -14,6 +14,8 @@ import rest from './assets/animations/skull_rest.png';
 import background from './assets/animations/city-pixel-art.jpg';
 // Import audio
 import endSound from './assets/buttons/endSound.mp3';
+import mute from './assets/buttons/mute.png';
+import unMute from './assets/buttons/unmute.png';
 
 
 const endAudio = new Audio(endSound);
@@ -30,11 +32,9 @@ class Pomodoro extends React.Component {
       isActive: false,
       status: 'Work',
       frame : 0,
+      isMuted: false,
     }
   }
-
-  
-
 
 
   interval = null; // The interval variable is used to store the interval ID
@@ -58,6 +58,14 @@ class Pomodoro extends React.Component {
       this.interval = setInterval(this.decrementTime, 1000); // Set the interval to decrement the time by 1 second
       }
     }
+  }
+
+  toggleMute = () => {
+    this.setState(prevState => ({
+      isMuted: !prevState.isMuted
+    }), () => {
+      this.widget.setVolume(this.state.isMuted ? 0 : 100);
+    });
   }
 
   decrementTime = () => {
@@ -168,16 +176,23 @@ class Pomodoro extends React.Component {
     const imageStyle = {
       position: 'absolute',
       bottom: '0',
-      width: '250px',
-      height: '250px',
+      width: '200px',
+      height: '200px',
       backgroundSize: 'cover',
       zIndex: '0'
     }
 
+    const muteButton = {backgroundImage: `url(${mute})`,}
+    const unMuteButton = {backgroundImage: `url(${unMute})`,}
+
+
 
     return (
       <div style={containerStyle}> 
-        <h1 style={titleStyle} className='display-1 d-flex justify-content-center align-items-center'>_</h1> 
+        <button onClick={this.toggleMute} className='button mute' style={this.state.isMuted ? muteButton : unMuteButton}>
+          {this.state.isMuted ? 'Unmute' : 'Mute'}
+        </button>
+        <h1 style={titleStyle} className='display-1 d-flex justify-content-center align-items-center'></h1> 
         <TimerDisplay 
           time={time} 
           timeUp={this.timeUp} 
@@ -190,27 +205,25 @@ class Pomodoro extends React.Component {
           />
         <TimerStatus status={<img src={image} alt={status} style={imageStyle}/>}/>
 
+
         <iframe
           id="soundcloud"
-          width="100%"
-          height="166"
+          width="40%"
+          height="25%"
           frameborder="no"
           style={{ display: 'none' }}
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1296743995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1296743995&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
         ></iframe> 
 
         </div>
     );
   }
-// <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1296743995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/lofifruitsmusic" title="Lofi Fruits" target="_blank" style="color: #cccccc; text-decoration: none;">Lofi Fruits</a> · <a href="https://soundcloud.com/lofifruitsmusic/sets/jazzfruits" title="Jazz Fruits Music 🍉Background chill beats to relax, work, study, sleep" target="_blank" style="color: #cccccc; text-decoration: none;">Jazz Fruits Music 🍉Background chill beats to relax, work, study, sleep</a></div>
 
 }
 
 export default Pomodoro; // Export the Pomodoro component to be used in other files
 
 //TODO :
-// 3. Implement SoundCloud API to play music when working directly on App
-// 3.1 Music should pause when timer is paused etc.
-// 4. Progress bar for XP
+// Make into a package that can be installed and used in other projects
 
 
