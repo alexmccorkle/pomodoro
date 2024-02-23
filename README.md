@@ -2,7 +2,7 @@
 
 Simple Pomodoro timer that I made as a way of practicing/learning React. So far it's a functioning timer where you can adjust the time and either 'Start', 'Pause', or 'Reset' the timer. 
 
-**Latest Update:** 17/02/24
+**Latest Update:** 23/02/24
 
 ### Features :
 - Buttons for increasing/decreasing time
