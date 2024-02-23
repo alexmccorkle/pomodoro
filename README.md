@@ -18,6 +18,11 @@ Simple Pomodoro timer that I made as a way of practicing/learning React. So far 
   - When you click Play it starts the playlist
   - Pause/Reset pauses the playlist
 
+### How to Package:
+- Should be able to package and make an app by running '$npm run build' first, followed by '$npm run package'
+- This will create a folder within the root containing the app that can be sent to people 
+- Just need to adjust the "package" script in the package.json file if you want to adjust what OS it is packaged for, (i.e. Silicon Chips vs Intel)
+
 
 ### Screenshots : 
 #### - How it looks as of 16/02/24:
