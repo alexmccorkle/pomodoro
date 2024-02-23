@@ -19,24 +19,29 @@ import endSound from './assets/buttons/endSound.mp3';
 const endAudio = new Audio(endSound);
 
 
+
 class Pomodoro extends React.Component {
   // The constructor method is called before the component is mounted
   constructor(props) { //
     super(props); // The super method is used to call the constructor of the parent class
     this.state = { // The state object is used to store the data that the component will use
       time: 25 * 60, 
+      initialWorkTime: 25 * 60,
       isActive: false,
       status: 'Work',
       frame : 0,
     }
   }
 
+  
 
 
 
   interval = null; // The interval variable is used to store the interval ID
 
   componentDidMount() {
+    this.widget = window.SC.Widget(document.getElementById('soundcloud'));
+
     this.interval = setInterval(this.decrementTime, 1000);
     this.frameTimer = setInterval(this.updateFrame, 1000);
   }
@@ -61,7 +66,7 @@ class Pomodoro extends React.Component {
       this.setState({
         status : this.state.status === 'Work' ? 'Rest' : 'Work',
         // If the status is Work, set the status to rest, else set the status to Work
-        time: this.state.status === 'Work' ? 5 * 60 : 25 * 60 
+        time: this.state.status === 'Work' ? 5 * 60 : this.state.initialWorkTime,
         // If the status is Work, set the time to 5 minutes, else set the time to 25 minutes
       });
     }
@@ -76,12 +81,18 @@ class Pomodoro extends React.Component {
 
   timeUp = () => {
     if (this.state.time < 60 * 60) // Can't go above 60 minutes when setting the time
-    this.setState(prevState => ({ time: prevState.time + 60}));
+    this.setState(prevState => ({
+      time: prevState.time + 60,
+      initialWorkTime: prevState.time + 60
+      }));
   }
 
   timeDown = () => {
     if (this.state.time > 60) // Can't go below 1 minute when setting the time
-    this.setState(prevState => ({ time: prevState.time - 60}));
+    this.setState(prevState => ({ 
+      time: prevState.time - 60,
+      initialWorkTime: prevState.time - 60
+    }));
   }
 
 
@@ -89,20 +100,24 @@ class Pomodoro extends React.Component {
     this.setState({
       isActive: true // Set the isActive state to true when the timer starts
     });
+    this.widget.play();
   }
 
   pauseTimer = () => {
     this.setState({
       isActive: false // Set the isActive state to false when the timer is paused
     });
+    this.widget.pause();
   }
 
   resetTimer = () => { // Reset the timer to 25 minutes
     this.setState({
       time: 25 * 60,
       isActive: false,
-      status: 'Work'
+      status: 'Work',
+      initialWorkTime: 25 * 60
     });
+    this.widget.pause();
   }
 
   updateFrame = () => {
@@ -150,6 +165,15 @@ class Pomodoro extends React.Component {
       marginBottom: '20px'
     }
 
+    const imageStyle = {
+      position: 'absolute',
+      bottom: '0',
+      width: '250px',
+      height: '250px',
+      backgroundSize: 'cover',
+      zIndex: '0'
+    }
+
 
     return (
       <div style={containerStyle}> 
@@ -164,22 +188,29 @@ class Pomodoro extends React.Component {
           pauseTimer={this.pauseTimer}
           resetTimer={this.resetTimer}
           />
-        <TimerStatus status={<img src={image} alt={status} style={{position: 'absolute', bottom: '0', width: '200px', height: '200px'}}/>}/> 
-      </div>
+        <TimerStatus status={<img src={image} alt={status} style={imageStyle}/>}/>
+
+        <iframe
+          id="soundcloud"
+          width="100%"
+          height="166"
+          frameborder="no"
+          style={{ display: 'none' }}
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1296743995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        ></iframe> 
+
+        </div>
     );
   }
-
+// <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1296743995&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/lofifruitsmusic" title="Lofi Fruits" target="_blank" style="color: #cccccc; text-decoration: none;">Lofi Fruits</a> · <a href="https://soundcloud.com/lofifruitsmusic/sets/jazzfruits" title="Jazz Fruits Music 🍉Background chill beats to relax, work, study, sleep" target="_blank" style="color: #cccccc; text-decoration: none;">Jazz Fruits Music 🍉Background chill beats to relax, work, study, sleep</a></div>
 
 }
 
 export default Pomodoro; // Export the Pomodoro component to be used in other files
 
 //TODO :
-// 1. Change so that you can not change rest time when in rest mode
-// 2. Add so that if you work for example 30 minutes, you get a longer break
 // 3. Implement SoundCloud API to play music when working directly on App
-  // 3.1 Music should pause when timer is paused etc.
+// 3.1 Music should pause when timer is paused etc.
 // 4. Progress bar for XP
-
 
 

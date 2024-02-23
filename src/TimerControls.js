@@ -5,19 +5,17 @@ import './App.css' // Mainly importing for button styling/hover/active states
 //Custom Buttons:
 import startButton from './assets/buttons/start.png'
 import pauseButton from './assets/buttons/pause.png'
-// import stopButton from './assets/buttons/stop.png'
 import resetButton from './assets/buttons/reset.png'
 
 class TimerControls extends React.Component {
 
   render() {
 
-
-
     const { startTimer, pauseTimer, resetTimer } = this.props; 
     // Destructure the props which means that the properties of the props object are assigned to variables
     // In simple terms: the properties of the props object can be accessed directly
   
+
     const buttonStart = {backgroundImage: `url(${startButton})`,}
     const buttonPause = {backgroundImage: `url(${pauseButton})`, marginLeft: '10px', marginRight: '10px'}
     const buttonReset = {backgroundImage: `url(${resetButton})`}

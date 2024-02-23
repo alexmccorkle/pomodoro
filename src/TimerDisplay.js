@@ -22,7 +22,7 @@ class TimerDisplay extends React.Component {
 
     }
 
-    const buttonLeftStyle = {backgroundImage: `url(${buttonLeft})`,}
+    const buttonLeftStyle = {backgroundImage: `url(${buttonLeft})`}
     const buttonRightStyle = {backgroundImage: `url(${buttonRight})`}
 
     const timeContainer = {
