@@ -192,7 +192,7 @@ class Pomodoro extends React.Component {
         <button onClick={this.toggleMute} className='button mute' style={this.state.isMuted ? muteButton : unMuteButton}>
           {this.state.isMuted ? 'Unmute' : 'Mute'}
         </button>
-        <h1 style={titleStyle} className='display-1 d-flex justify-content-center align-items-center'></h1> 
+        <h1 style={titleStyle} className='display-1 d-flex justify-content-center align-items-center'>_</h1> 
         <TimerDisplay 
           time={time} 
           timeUp={this.timeUp} 
@@ -206,7 +206,7 @@ class Pomodoro extends React.Component {
         <TimerStatus status={<img src={image} alt={status} style={imageStyle}/>}/>
 
 
-        <iframe
+        <iframe title='SoundCloud'
           id="soundcloud"
           width="40%"
           height="25%"

@@ -1,20 +1,25 @@
+const path = require('path');
+const url = require('url');
+
+
 const {app, BrowserWindow} = require('electron');
 
 function createWindow () {
-  const win = new BrowserWindow( { // The BrowserWindow object is used to create a new window
+  const win = new BrowserWindow({
     width: 408,
     height: 528,
     resizable: false, // The window is not resizable
     webPreferences: {
-      nodeIntegration: true // This is required to use Electron with React
+      nodeIntegration: true,
     }
   })
 
-  win.loadURL('http://localhost:3000'); // Load the React app in the window
-  // win.webContents.openDevTools(); // Open the DevTools
+  const startUrl = url.format({
+    pathname: path.join(__dirname, './build/index.html'),
+    protocol: 'file:',
+    slashes: true
+  });
+  win.loadURL(startUrl);
 }
 
-app.whenReady().then(createWindow); // When the app is ready, create the window
-// .then() is used to chain a promise and execute the next function when the promise is resolved
-// So when the promise of whenReady() is resolved, the createWindow() function is executed
-// Or else, the catch() method is used to handle the rejected promise
+app.whenReady().then(createWindow)
