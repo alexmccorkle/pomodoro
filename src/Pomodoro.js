@@ -223,7 +223,3 @@ class Pomodoro extends React.Component {
 
 export default Pomodoro; // Export the Pomodoro component to be used in other files
 
-//TODO :
-// Make into a package that can be installed and used in other projects
-
-

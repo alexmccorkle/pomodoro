@@ -1,8 +1,8 @@
 # Pomodoro Timer
 
-Simple Pomodoro timer that I made as a way of practicing/learning React. So far it's a functioning timer where you can adjust the time and either 'Start', 'Pause', or 'Reset' the timer. 
+Simple Pomodoro timer that I made as a way of practicing/learning React. Finished with the project for the time being. Have packaged and distributed it to two family members and my girlfriend so they can all use the app when working, and it works!
 
-**Latest Update:** 23/02/24
+**Latest Update:** 26/02/24
 
 ### Features :
 - Buttons for increasing/decreasing time
@@ -37,13 +37,13 @@ Simple Pomodoro timer that I made as a way of practicing/learning React. So far 
   <img width="350" alt="Screenshot of Work state" src="https://github.com/alexmccorkle/pomodoro/assets/114952775/85b770a5-f262-44fc-9b1f-760fa8fe7fca">
 
 
-### To Do : 
-  1. Add a sound when the timer ends
-  2. Turn into Electron app and all that comes with that
-  3. Add sound effects to buttons
-  4. Customize button colors and styles, make them cool and pixel style
-  5. Implement a settings or a start page to change the work and rest times?
-  6. Add animations to the state display instead of text
-     a. Make the state display a sprite that is working at a desk when state = work
-     b. Make the state display a sprite that is resting when state = rest
+### Future Features : 
+  1. Add XP Bar to track Progress of some sort
+    a. With rewards for using it often
+  2. Options Menu
+  3. Choice of music 
+  4. Different backgrounds/Character model
+  5. Get higher resolution buttons
+    a. Right now they're 32x32 and stretched, so would just need to make them the correct size so the buttons are 'clearer'
+
 
